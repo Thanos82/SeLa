@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Edmx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DataServices"/>
+      </xs:sequence>
+      <xs:attribute name="Version" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DataServices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Schema"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Schema">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="EnumType"/>
+        <xs:element ref="ComplexType"/>
+        <xs:element ref="EntityType"/>
+        <xs:element ref="EntityContainer"/>
+      </xs:choice>
+      <xs:attribute name="Namespace" type="xs:string" use="required"/>
+       </xs:complexType>
+  </xs:element>
+  <xs:element name="EnumType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Member" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Member">
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntityType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Key"/>
+        <xs:element ref="Property" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Key">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PropertyRef" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PropertyRef">
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Property">
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+      <xs:attribute name="Nullable" type="xs:string"/>
+      <xs:attribute name="Type" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComplexType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Property" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntityContainer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="EntitySet" maxOccurs="unbounded"/>
+        <xs:element ref="FunctionImport" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntitySet">
+    <xs:complexType>
+      <xs:attribute name="EntityType" type="xs:string" use="required"/>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FunctionImport">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element ref="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="ReturnType" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="IsBindable" type="xs:string"/>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+      <xs:attribute name="ReturnType" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnType">
+    <xs:complexType>
+      <xs:attribute name="Type" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Parameter">
+    <xs:complexType>
+      <xs:attribute name="Name" type="xs:string" use="required"/>
+      <xs:attribute name="Type" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,20 @@
+remove edmx prefix from Edmx and DataServices
+remove xmlns from Schema
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  
+<DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    
+<Schema Namespace="SAPB1">
+
+Remove duplicated Get and Delete functions for UnitsOfMeasurements entity.
+        <FunctionImport IsBindable="true" Name="Get">
+          <Parameter Name="UnitOfMeasurementParams" Type="SAPB1.UnitOfMeasurement"/>
+          <ReturnType Type="SAPB1.UnitOfMeasurement"/>
+        </FunctionImport>
+        <FunctionImport IsBindable="true" Name="Delete">
+          <Parameter Name="UnitOfMeasurementParams" Type="SAPB1.UnitOfMeasurement"/>
+        </FunctionImport>
+
